@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7k7reeqw3xvq"]
+
+[ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_27p4r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7pj2r"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_l8j52"]
+offsets = PackedFloat32Array(0.373303, 0.604072, 0.882353, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 0, 1, 1, 0.65098, 0, 0.560784, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hr01k"]
+gradient = SubResource("Gradient_l8j52")
+width = 14
+height = 14
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kunnr"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Curve" id="Curve_f2s4g"]
+_data = [Vector2(0, 0), 0.0, 31.6417, 0, 0, Vector2(0.0821918, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.88119, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lu612"]
+curve = SubResource("Curve_f2s4g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pjboi"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 3.5
+emission_ring_inner_radius = 2.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 1, 0.47451, 0.247059)
+alpha_curve = SubResource("CurveTexture_lu612")
+
+[sub_resource type="Gradient" id="Gradient_f84kh"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8k34u"]
+gradient = SubResource("Gradient_f84kh")
+width = 8
+height = 8
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+script = ExtResource("1_27p4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7pj2r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("GradientTexture2D_hr01k")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_kunnr")
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_pjboi")
+texture = SubResource("GradientTexture2D_8k34u")
+fixed_fps = 60
+interpolate = false
+fract_delta = false
