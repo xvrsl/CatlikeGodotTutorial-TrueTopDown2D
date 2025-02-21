@@ -11,5 +11,14 @@ config_version=5
 [application]
 
 config/name="CatlikeTrueTopDown2D"
+run/main_scene="res://map.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=400
+window/size/viewport_height=240
+window/size/mode=4
+window/stretch/mode="viewport"
+window/stretch/scale_mode="integer"
