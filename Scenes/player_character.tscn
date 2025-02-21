@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7k7reeqw3xvq"]
+[gd_scene load_steps=12 format=3 uid="uid://b7k7reeqw3xvq"]
 
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_27p4r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7pj2r"]
 radius = 6.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kgwnj"]
+light_mode = 1
 
 [sub_resource type="Gradient" id="Gradient_l8j52"]
 offsets = PackedFloat32Array(0.373303, 0.604072, 0.882353, 1)
@@ -58,6 +61,7 @@ shape = SubResource("CircleShape2D_7pj2r")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_kgwnj")
 texture = SubResource("GradientTexture2D_hr01k")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]

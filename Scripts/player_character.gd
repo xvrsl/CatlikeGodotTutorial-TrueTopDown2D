@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export_range(0,1000) var speed := 60
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_player_input()
 	if move_and_slide():
 		resolve_collisions()
@@ -16,5 +16,5 @@ func resolve_collisions() -> void:
 	
 
 func get_player_input() -> void:
-	var vector := Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	var vector := Input.get_vector("MoveLeft","MoveRight","MoveUp","MoveDown")
 	velocity = vector * speed

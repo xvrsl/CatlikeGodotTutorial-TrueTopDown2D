@@ -9,6 +9,9 @@ func _physics_process(delta: float) -> void:
 		velocity *= 1.0 - drag * delta
 		if move_and_slide():
 			resolve_collisions()
+	else:
+		position = round(position)
+		velocity = Vector2.ZERO
 		
 func resolve_collisions() -> void:
 	var current_velocity := velocity
@@ -17,7 +20,7 @@ func resolve_collisions() -> void:
 		var body := collision.get_collider() as MovableObject
 		if body:
 			apply_impact(body.velocity)
-			body.apply_impact(velocity)
+			body.apply_impact(current_velocity)
 		else:
 			velocity -= velocity.project(collision.get_normal());
 	

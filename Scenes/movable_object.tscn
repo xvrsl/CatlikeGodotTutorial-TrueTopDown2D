@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyyv3204eyicl"]
+[gd_scene load_steps=6 format=3 uid="uid://dyyv3204eyicl"]
 
 [ext_resource type="Script" path="res://Scenes/movable_object.gd" id="1_nskkn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roix0"]
-size = Vector2(8, 8)
+size = Vector2(7.9, 7.9)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hulyo"]
+cull_mode = 2
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
 [sub_resource type="Gradient" id="Gradient_jvdsl"]
 
@@ -16,12 +20,17 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 1)
 
 [node name="MovableObject" type="CharacterBody2D"]
+collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_nskkn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_roix0")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hulyo")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
 texture_filter = 1
 texture = SubResource("GradientTexture2D_5tseg")
